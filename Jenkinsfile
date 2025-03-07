@@ -10,6 +10,7 @@ pipeline {
         }
         stage(test) {
             steps {
+                sh 'mvn -N wrapper:wrapper -Dmaven=3.8.7'
                 sh './mvnw cargo:run -P tomcat90'
             }
         }
@@ -22,7 +23,7 @@ pipeline {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'DockerHub', usernameVariable: 'username', passwordVariable: 'pass')]) {
                 sh 'docker login -u ${username} -p ${pass}'
-                sh 'docker tag ranahesham/jpetstore:v1.1'
+                sh 'docker tag jpetstore ranahesham/jpetstore:v1.1'
                 sh 'docker image push ranahesham/jpetstore:v1.1'
                 }
             }
