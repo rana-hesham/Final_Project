@@ -2,7 +2,7 @@ pipeline {
     agent any
     stages {
     
-        stage(build code) {
+        stage('build-code') {
             steps {
                 sh 'chmod +x mvnw'
                 sh 'mvn clean compile package'
