@@ -24,7 +24,7 @@ pipeline {
         }
         stage('deploy_on_the_same_machine') {
             steps {
-                sh 'docker run -d -p 8081:8080 app'
+                sh 'docker run -d -p 8081:8080 ranahesham/jpetstore:v1.1'
             }
         }
         stage('deploy_on_slave_machine') {
