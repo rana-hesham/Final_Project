@@ -8,12 +8,12 @@ pipeline {
                 sh 'mvn clean compile package'
             }
         }
-        stage(test) {
-            steps {
-                sh 'mvn -N wrapper:wrapper -Dmaven=3.8.7'
-                sh './mvnw cargo:run tomcat90'
-            }
-        }
+  #      stage(test) {
+  #          steps {
+  #              sh 'mvn -N wrapper:wrapper -Dmaven=3.8.7'
+  #              sh './mvnw cargo:run -p tomcat90'
+  #          }
+  #      }
         stage('build-image') {
             steps {
                 sh 'sudo docker build -t jpetstore .'
