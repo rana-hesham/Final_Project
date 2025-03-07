@@ -10,7 +10,7 @@ pipeline {
         }
         stage('build-image') {
             steps {
-                sh 'sudo docker build -t jpetstore .'
+                sh 'docker build -t jpetstore .'
             }
         }
         stage('Push') {
@@ -24,7 +24,7 @@ pipeline {
         }
         stage('deploy_on_the_same_machine') {
             steps {
-                sh 'sudo docker build -t jpetstore .'
+                sh 'docker run -d -p 8081:8080 app'
             }
         }
         stage('deploy_on_slave_machine') {
