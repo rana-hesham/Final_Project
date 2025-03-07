@@ -11,7 +11,7 @@ pipeline {
         stage(test) {
             steps {
                 sh 'mvn -N wrapper:wrapper -Dmaven=3.8.7'
-                sh './mvnw cargo:run -P tomcat90'
+                sh './mvnw cargo:run tomcat90'
             }
         }
         stage('build-image') {
