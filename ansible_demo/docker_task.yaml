@@ -1,0 +1,23 @@
+- name: Manage Docker Containers
+  hosts: Frontend
+  tasks: 
+      - name: Run jpetstore app
+        docker_container:
+          name: jpetstore_app
+          image: ranahesham/jpetstore:v1.1
+          state: started
+          command: "echo Hello from Ansible!"
+            # - name: Pull latest nginx image
+            # become: yes
+            # become_user: root
+            # docker_image:
+            # name: nginx
+            # source: pull
+            # - name: Run a new Nginx container
+            # become: yes
+            # become_user: root
+            # docker_container:
+            # name: my_nginx_container
+            # image: redis
+            # state: present
+            # command: "echo Hello from Ansible!"
