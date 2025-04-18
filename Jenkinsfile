@@ -29,10 +29,7 @@ pipeline {
         }
         stage('deploy_on_slave_machine') {
             steps {
-                sh 'sudo su - root -c 'whoami''
-                sh 'su - ansible'
-                sh 'cd Desktop/ansible_demo/'
-                sh 'ansible-playbook -i inventory.yaml docker_task.yaml'
+                ansiblePlaybook credentialsId: 'private_key', inventory: 'inventory.yaml', playbook: 'docker_task.yaml'
             }
         }       
 
