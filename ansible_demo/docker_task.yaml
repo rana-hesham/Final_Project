@@ -7,6 +7,18 @@
           image: ranahesham/jpetstore:v1.1
           state: started
           command: "echo Hello from Ansible!"
+
+      - name: Run jpetstore app
+        docker_container:
+          name: prometheus
+          image: prom/prometheus
+          state: started
+          command: "echo Hello from Ansible!"
+          network_mode: bridge
+          ports:
+          - "9090:9090"
+          volumes:
+          - /opt/prometheus:/etc/prometheus
             # - name: Pull latest nginx image
             # become: yes
             # become_user: root
